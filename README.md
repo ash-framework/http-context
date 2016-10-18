@@ -39,7 +39,28 @@ Wrapper for express request and response with request wide state storage and ret
 
 
 ## Usage
-Usage instructions go here
+
+Creating an instance of `HttpContext`
+```js
+const context = new HttpContext(request, response)
+```
+
+Accessing request and response on context
+```js
+context.request
+context.response
+```
+
+Using context to store state for the lifetime of the `request`
+```js
+context.set('token', 'AGH123AS34SDF')
+```
+
+Retrieving stored state anywhere `request` is available
+```js
+const anotherContext = new HttpContext(request, response)
+anotherContext.get('token) // 'AGH123AS34SDF'
+```
 
 <!-- HISTORY/ -->
 
